@@ -53,6 +53,10 @@ const ItemSchema = new Schema({
         type : Schema.Types.String,
         required: true
     },
+    seller: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     images : [
         ImageSchema
     ],
