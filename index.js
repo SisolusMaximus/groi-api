@@ -40,6 +40,7 @@ app.get("/all", itemController.all)
 app.get("/search:query" ,itemController.search)
 app.get("/filter/:typeOfQuery/:query" ,itemController.filter)
 app.get("/show:id", itemController.show)
+app.post("/delete", auth.isSignedIn, upload.none(), itemController.delete);
 
 
 // user routes
@@ -53,6 +54,7 @@ app.post("/user/resetPassword",upload.none(),userController.resetPassword )
 app.post("/user/sendVerificationMessageResetPassword",upload.none(),userController.sendVerificationMessageReset)
 app.post("/user/sendVerificationMessageDeleteAccount",auth.isSignedIn,upload.none(),userController.sendVerificationMessageDelete)
 app.post("/user/deleteProfile",auth.isSignedIn, upload.none(), userController.deleteProfile)
+
 //Turning on listening for incoming request on specified port
 app.listen(3001, ()=>{
     console.log("-------GROI API listening on port 3001-------");

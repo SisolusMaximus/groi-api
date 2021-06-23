@@ -106,3 +106,20 @@ module.exports.filter = async (req, res) =>{
     })
   }
 }
+
+module.exports.delete = async (req, res) =>{
+  try{
+    const itemTodelete = await Item.findById(req.body._id).populate("seller")
+    if (itemTodelete.seller._id.toString() === req.id){
+      await Item.findByIdAndDelete(req.body._id)
+      res.status(200).json({
+        success: true
+      })
+    }
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      error: e.message
+    })
+  }
+}
