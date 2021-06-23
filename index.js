@@ -55,6 +55,15 @@ app.post("/user/sendVerificationMessageResetPassword",upload.none(),userControll
 app.post("/user/sendVerificationMessageDeleteAccount",auth.isSignedIn,upload.none(),userController.sendVerificationMessageDelete)
 app.post("/user/deleteProfile",auth.isSignedIn, upload.none(), userController.deleteProfile)
 
+
+if(process.env.NODE_ENV !== "production"){
+    app.use(express.static(path.join(__dirname, 'client/build')))
+
+    app.get('*', (req, res) =>{
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+    })
+}
+
 //Turning on listening for incoming request on specified port
 app.listen(3001, ()=>{
     console.log("-------GROI API listening on port 3001-------");
