@@ -9,7 +9,7 @@ const redis = require('redis');
 
 //Connecting to Redis
 const redisClient = redis.createClient(
-    process.env.REDIS_URI,
+    process.env.REDIS_URL,
 );
 
 redisClient.on("error", console.error.bind(console, "redis connection error:"));
