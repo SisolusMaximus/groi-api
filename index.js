@@ -56,11 +56,11 @@ app.post("/user/sendVerificationMessageDeleteAccount",auth.isSignedIn,upload.non
 app.post("/user/deleteProfile",auth.isSignedIn, upload.none(), userController.deleteProfile)
 
 
-if(process.env.NODE_ENV !== "production"){
-    app.use(express.static(path.join(__dirname, 'frontend')))
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join(__dirname, 'client/build')))
 
     app.get('*', (req, res) =>{
-        res.sendFile(path.join(__dirname, 'frontend', 'index.html'))
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
     })
 }
 
