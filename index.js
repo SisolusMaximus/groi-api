@@ -64,7 +64,16 @@ if(process.env.NODE_ENV !== "production"){
     })
 }
 
+let port
+
+if (process.env.NODE_ENV === "production"){
+    port = process.env.PORT
+} else {
+    port = 3001
+}
+
+
 //Turning on listening for incoming request on specified port
-app.listen(3001, ()=>{
+app.listen(port, ()=>{
     console.log("-------GROI API listening on port 3001-------");
 });
