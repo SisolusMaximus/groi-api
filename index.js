@@ -75,5 +75,5 @@ if (process.env.NODE_ENV === "production"){
 
 //Turning on listening for incoming request on specified port
 app.listen(port, ()=>{
-    console.log("-------GROI API listening on port 3001-------");
+    console.log(`-------GROI API listening on port ${port}-------`);
 });
