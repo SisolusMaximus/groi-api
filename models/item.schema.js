@@ -34,7 +34,7 @@ const ItemSchema = new Schema({
     },
     condition : {
         type : Schema.Types.String,
-        maxLength: 20,
+        maxLength: 50,
         required: true
     },
     adress : {
